@@ -12,23 +12,23 @@
  *              takes its place and the old left-child is set as
  *              the left-child of the newer node.
  */
-
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
 	binary_tree_t *newer_node;
 
-	if (parent == NULL)
+	if (!parent)
 		return (NULL);
 
-	newer_node = binary_tree_node(parent, value);
-	if (newer_node == NULL)
+	newer_node = malloc(sizeof(binary_tree_t));
+	if (!newer_node)
 		return (NULL);
-	
-	if (parent->left != NULL)
-	{
-		newer_node->left = parent->left;
-		parent->left->parent = new_node;
-	}
-	parent->left = newer_node;
+
+	newer_node->n = value;
+	newer_node->parent = parent;
+	newer_node->right = NULL;
+	newer_node->left = parent->left;
+	parent->left = new;
+	if (newer_node->left)
+		newer_node->left->parent = newer_node;
 	return (newer_node);
 }
