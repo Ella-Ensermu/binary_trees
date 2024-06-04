@@ -8,7 +8,6 @@
  * Return: Pointer to the newly created node
  *         Otherwise - NULL on failure
  */
-
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 {
 	binary_tree_t *newer_node;
