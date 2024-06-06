@@ -2,8 +2,9 @@
 
 /**
  * binary_tree_inorder - goes through a binary tree using in-order traversal
- * @tree: tree to traverse
- * @func: pointer to a function to call for each node
+ * @tree: A pointer to the root node of the tree to traverse
+ * @func: function to use
+ * Return: Nothing
  */
 void binary_tree_inorder(const binary_tree_t *tree, void (*func)(int))
 {
