@@ -5,16 +5,15 @@
  * @func:  pointer to a function to call for each node.
  * Return: Nothing
  */
-void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	if (!tree || !func)
-	{
-		return;
-	}
-	else
-	{
-		binary_tree_postorder(tree->left, func);
-		binary_tree_postorder(tree->right, func);
-	}
-	func(tree->n);
+	size_t lengther_l = 0;
+	size_t lengther_r = 0;
+
+	if (!tree)
+		return (0);
+
+	lengther_l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+	lengther_r = tree->right ? 1 + binary_tree_height(tree->right) : 0;
+	return (lengther_l > lengther_r ? lengther_l : lengther_r);
 }
