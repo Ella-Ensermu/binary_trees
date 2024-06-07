@@ -1,47 +1,34 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_is_perfect - checks if a binary tree is perfect
- * @tree: a pointer to the root node of the tree to check
+ * binary_tree_is_perfect - Checks if a binary tree is perfect.
+ * @tree: A pointer to the root node of the tree to check.
  *
- * Return: 1 if the tree is perfect
- *         0 if the tree is not perfect
- *         0 if tree is NULL
+ * Return: If tree is NULL or not perfect, 0.
+ *         Otherwise, 1.
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	size_t height = 0;
-	size_t nodes = 0;
-	size_t power = 0;
-
-	if (!tree)
+	if (tree == NULL)
 		return (0);
-
-	if (!tree->right && !tree->left)
-		return (1);
-
-	height = binary_tree_height(tree);
-	nodes = binary_tree_size(tree);
-
-	power = (size_t)_pow_recursion(2, height + 1);
-	return (power - 1 == nodes);
+	return (is_perfect_recursive(tree, depth(get_leaf(tree)), 0));
 }
 
 /**
- *_pow_recursion - returns the value of x raised to the power of y
- *@x: the value to exponentiate
- *@y: the power to raise x to
- *Return: x to the power of y, or -1 if y is negative
+ *_pow_recursion - returns the value of a raised to the power of b
+ *@a: the value to exponentiate
+ *@b: the power to raise a to
+ *Return: a to the power of b, or -1 if b is negative
  */
 
-int _pow_recursion(int x, int y)
+int _pow_recursion(int a, int b)
 {
-	if (y < 0)
+	if (b < 0)
 		return (-1);
-	if (y == 0)
+	if (b == 0)
 		return (1);
 	else
-		return (x * _pow_recursion(x, y - 1));
+		return (a * _pow_recursion(a, b - 1));
 
 }
 
